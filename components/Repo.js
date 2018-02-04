@@ -11,8 +11,10 @@ import {
 	Pre,
 	Star
 } from 'rebass'
-
 import Link from 'next/link'
+
+import Npm from './Npm'
+import { colors } from './styles'
 
 const sx = {
 	divider: {
@@ -23,8 +25,8 @@ const sx = {
 		transform: 'scaleX(0)',
 		transformOrigin: '0 0',
 		animationName: 'grow',
-		animationDelay: '1s',
-		animationDuration: '1s',
+		animationDelay: '2s',
+		animationDuration: '1.5s',
 		animationTimingFunction: 'ease-out',
 		animationFillMode: 'forwards'
 	}
@@ -60,10 +62,7 @@ const Repo = props => {
 						<Relative>
 							<Absolute right>
 								<Flex>
-									<Star
-										f={24}
-										children={props.repo.stargazers_count}
-									/>
+									<Text f={24} color={colors.lightGray} children={props.repo.stargazers_count} />
 									<Star f={24} />
 								</Flex>
 							</Absolute>
@@ -73,7 +72,7 @@ const Repo = props => {
 								GitHub
 							</NavLink>
 							<Box mx={2} />
-							<Pre>npm install {props.repo.name}</Pre>
+							<Npm>{props.repo.name}</Npm>
 						</Flex>
 					</div>
 				)}
@@ -81,4 +80,22 @@ const Repo = props => {
 		</Flex>
 	)
 }
+
+Repo.getInitialProps = async function ( { repo } ) {
+	// console.log('asd', await npmName('movie-info'))
+	// Get a single repo to feature
+	// let packageJson = await fetch(
+	// 	`https://raw.githubusercontent.com/${username}/${repo}/master/package.json`
+	// ).then(
+	// 	res =>
+	// 		res.json().then(res, err => {
+	// 			console.log(err)
+	// 			return ''
+	// 		}),
+	// 	err => console.log(err)
+	// )
+	let packageJson = repo
+	return { packageJson }
+}
+
 export default Repo

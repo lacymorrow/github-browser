@@ -4,6 +4,7 @@ import Header from './Header'
 import Footer from './Footer'
 import Script from './Script'
 
+
 import { colors, gradient } from './styles'
 
 const sx = {
@@ -24,14 +25,11 @@ const Layout = (props) => {
 				<Head>
 					<title>{props.title || 'Init'}</title>
 
-					<meta name="viewport" content="width=device-width, initial-scale=1" />
-					<meta charSet="utf-8" />
-
 					<Script>
-						{() => {
-							// any arbitrary js
-							console.log(`init loaded`)
-						}}
+					  {() => {
+					    // any arbitrary js
+					    console.log(`init loaded`)
+					  }}
 					</Script>
 				</Head>
 				<Header {...other} />

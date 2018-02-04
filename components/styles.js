@@ -9,12 +9,7 @@ export const colors = {
   lime: '#8f0',
   teal: '#0f8',
 
-  // old
-  manilla: '#f9f6d1',
-  slate: '#125b7a',
-  hi: '#c3ffb9',
-  green: '#93ff81',
-  light: '#fcfbe8'
+  lightGray: '#ccc'
 }
 
 const cx = key => colors[key] || key

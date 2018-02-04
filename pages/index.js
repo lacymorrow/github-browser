@@ -5,14 +5,15 @@ import fetch from 'isomorphic-unfetch'
 /* Next Components */
 import Link from 'next/link'
 
+
 /* Custom Components */
 import Layout from '../components/GlobalLayout'
 import Repo from '../components/Repo'
+import { colors, gradient } from '../components/styles'
 
-// Github username
-import username from '../components/github'
-// Github repo to try
-const featured = 'init-next'
+
+// Github username and repo
+import { username, featured } from '../components/github'
 
 // Capitalizes and converts hyphens to spaces; 'init-next' -> 'Init Next'
 const prettyName = str => {
@@ -65,14 +66,8 @@ const Index = props => {
 
 Index.getInitialProps = async function(context) {
 	// Get the users repos (max: 30)
-	let repos = await fetch(`https://api.github.com/users/${username}/repos`, {
-		json: true,
-		headers: {
-			accept: 'application/vnd.github.v3+json',
-			username: username,
-			'User-Agent': username
-		}
-	}).then(res => res.json())
+	let repos = await fetch(`https://api.github.com/users/${username}/repos`)
+	  .then(res => res.json())
 
 	// Get a random repo if none set
 	let rand = Math.floor(Math.random() * repos.length)
@@ -83,20 +78,7 @@ Index.getInitialProps = async function(context) {
 			return obj.name == repo
 		})[0]
 
-	// // Get a single repo to feature
-	// let packageJson = await fetch(
-	// 	`https://raw.githubusercontent.com/${username}/${repo}/master/package.json`
-	// ).then(
-	// 	res =>
-	// 		res.json().then(res, err => {
-	// 			console.log(err)
-	// 			return ''
-	// 		}),
-	// 	err => console.log(err)
-	// )
-	let packageJson = ''
-
-	return { packageJson, project, repo, repos }
+	return { project, repo, repos }
 }
 
 export default Index

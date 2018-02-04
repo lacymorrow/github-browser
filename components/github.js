@@ -1,2 +1,5 @@
 // Github Username
-export default 'lacymorrow'
+export const username = 'lacymorrow'
+
+// Github Repository
+export const featured = 'init-next'
