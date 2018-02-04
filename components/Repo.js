@@ -1,3 +1,5 @@
+import Link from 'next/link'
+
 import {
 	Flex,
 	Box,
@@ -11,7 +13,6 @@ import {
 	Pre,
 	Star
 } from 'rebass'
-import Link from 'next/link'
 
 import Npm from './Npm'
 import { colors } from './styles'
@@ -25,9 +26,8 @@ const sx = {
 		transform: 'scaleX(0)',
 		transformOrigin: '0 0',
 		animationName: 'grow',
-		animationDelay: '2s',
 		animationDuration: '1.5s',
-		animationTimingFunction: 'ease-out',
+		animationTimingFunction: 'ease',
 		animationFillMode: 'forwards'
 	}
 }
@@ -43,11 +43,11 @@ const Repo = props => {
 				<Heading f={[4, 5]} mt={[4, 4, 6]}>
 					<Relative>
 						<Absolute right>
-							<Badge bg="gray">
-								{props.repo &&
-									props.repo.license &&
-									props.repo.license.key.toUpperCase()}
-							</Badge>
+							{props.repo && (
+								<Badge bg="gray">
+									{props.repo.license && props.repo.license.key.toUpperCase()}
+								</Badge>
+							)}
 						</Absolute>
 					</Relative>
 					{props.title}
@@ -79,23 +79,6 @@ const Repo = props => {
 			</Box>
 		</Flex>
 	)
-}
-
-Repo.getInitialProps = async function ( { repo } ) {
-	// console.log('asd', await npmName('movie-info'))
-	// Get a single repo to feature
-	// let packageJson = await fetch(
-	// 	`https://raw.githubusercontent.com/${username}/${repo}/master/package.json`
-	// ).then(
-	// 	res =>
-	// 		res.json().then(res, err => {
-	// 			console.log(err)
-	// 			return ''
-	// 		}),
-	// 	err => console.log(err)
-	// )
-	let packageJson = repo
-	return { packageJson }
 }
 
 export default Repo

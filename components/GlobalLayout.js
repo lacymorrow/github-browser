@@ -54,9 +54,6 @@ const Layout = (props) => {
 					font-size: 12px;
 					font-weight: 700;
 				}
-				a.active {
-					color: ${colors.magenta};
-				}
 				a.button {
 					color: white;
 					background-color: ${colors.cyan};
