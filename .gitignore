@@ -60,3 +60,4 @@ typings/
 
 .next
 out
+package-lock.json

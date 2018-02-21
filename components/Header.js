@@ -35,7 +35,7 @@ const Header = (props) => {
 				</Link>
 				<Box ml="auto" />
 				<Box ml={2} />
-				<Box width={[1 / 4]}>
+				<Box w={[1 / 4]}>
 					{repos &&
 						repos.map && (
 							<Select

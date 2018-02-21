@@ -5,30 +5,28 @@ const registryUrl = ru()
 class Npm extends React.Component {
 	constructor () {
 	  super()
+	  this.state = { npm: false }
 	}
 
-	async getInitialProps ( { repo } ) {
-		let repos = await fetch(registryUrl + repo.name.toLowerCase())
-		  .then(res => res.json())
-		// Get a single repo to feature
-		// let packageJson = await fetch(
-		// 	`https://raw.githubusercontent.com/${username}/${repo}/master/package.json`
-		// ).then(
-		// 	res =>
-		// 		res.json().then(res, err => {
-		// 			console.log(err)
-		// 			return ''
-		// 		}),
-		// 	err => console.log(err)
-		// )
-		let packageJson = 'asdasd'
-		console.log(packageJson)
-		return { packageJson, repos, repo }
-	}
+	componentDidMount () {
+		// get a public package 
+		npi('album-art', function(err, pkg) {
+		  console.log(err, pkg);
+		})
+
+	  // fetch(`https://registry.npmjs.org/?callback=callback`, {  headers: { 'Access-Control-Allow-Origin':'*' }, method: "GET", mode: 'no-cors' })
+	  //   .then((res,err) => {this.setState({ npm: res.ok });console.log('as',res, err)})
+	  //   .catch(res => this.setState({ npm: false }))
+
+		// const res = jsonp('https://registry.npmjs.org/album-art?callback=callback', function (err, data) {
+		// 	// this.setState({ npm: res })
+		// 	console.log('asd', err, data)
+		// })
+	}	
 
 	render (props) {
 		return (
-			<Pre>{this.props.packageJson} npm i -g {props.children}</Pre>
+			<div>{ this.state.npm && (<Pre>npm i -g {this.props.children}</Pre>) }</div>
 		)
 	}
 }
