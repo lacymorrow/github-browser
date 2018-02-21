@@ -1,5 +1,3 @@
-const Jarvis = require("webpack-jarvis");
-
 module.exports = {
 	link: [
 	  {
@@ -21,11 +19,6 @@ module.exports = {
 		config.node = {
 			fs: 'empty'
 		}
-		config.plugins = [
-		  new Jarvis({
-		    port: 1337 // optional: set a port
-		  })
-		];
 
 		return config
 	}

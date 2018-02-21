@@ -9,10 +9,10 @@ class Npm extends React.Component {
 	}
 
 	componentDidMount () {
-		// get a public package 
-		npi('album-art', function(err, pkg) {
-		  console.log(err, pkg);
-		})
+		// get a public package
+		// npi('album-art', function(err, pkg) {
+		//   console.log(err, pkg);
+		// })
 
 	  // fetch(`https://registry.npmjs.org/?callback=callback`, {  headers: { 'Access-Control-Allow-Origin':'*' }, method: "GET", mode: 'no-cors' })
 	  //   .then((res,err) => {this.setState({ npm: res.ok });console.log('as',res, err)})
