@@ -10,6 +10,10 @@ import Link from 'next/link'
 import Layout from '../components/GlobalLayout'
 import Repo from '../components/Repo'
 import { colors, gradient } from '../components/styles'
+import {
+	Flex,
+	Box
+} from 'rebass'
 
 
 // Github username and repo
@@ -26,6 +30,7 @@ const prettyName = str => {
 const Index = props => {
 	const title = prettyName(props.repo)
 	const { project, repos, repo } = props
+
 	return (
 		<Layout
 			text={title}
@@ -34,32 +39,37 @@ const Index = props => {
 			title={title}
 			username={username}
 			error={!project}>
-			<div>
-				<Repo repo={project} title={title} username={username} />
-				{repos &&
-					repos.map && (
-						<ul>
-							{repos.map(r => {
-								let c = r.name == repo ? 'active' : ''
-								return (
-									<li key={r.id}>
-										<Link as={`/repo/${r.name}`} href={`/index?repo=${r.name}`}>
-											<a className={c}>{r.name}</a>
-										</Link>
-										<style jsx>{`
-											li {
-												display: inline-block;
-											}
-											a {
-												padding: 4px 16px;
-											}
-											`}</style>
-									</li>
-								)
-							})}
-						</ul>
-					)}
-			</div>
+			<Flex direction="column">
+				<Box>
+					<Repo repo={project} title={title} username={username} />
+				</Box>
+				<Box width={[3 /4]}>
+					{repos &&
+						repos.map && (
+							<ul>
+								{repos.map(r => {
+									let c = r.name == repo ? 'active' : ''
+									return (
+										<li key={r.id}>
+											<Link as={`/repo/${r.name}`} href={`/index?repo=${r.name}`}>
+												<a className={c}>{r.name}</a>
+											</Link>
+											<style jsx>{`
+												li {
+													display: inline-block;
+													padding: 4px 16px;
+												}
+												a {
+													padding: 4px 16px;
+												}
+												`}</style>
+										</li>
+									)
+								})}
+							</ul>
+						)}
+				</Box>
+			</Flex>
 		</Layout>
 	)
 }
