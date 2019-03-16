@@ -1,4 +1,5 @@
 module.exports = {
+	plugins: [],
 	link: [
 	  {
 	    rel: 'icon',
@@ -9,9 +10,6 @@ module.exports = {
 	exportPathMap: () => {
 		return {
 			'/': { page: '/' },
-			'/repo/init-next': { page: '/', query: { repo: 'init-next' }},
-			'/repo/album-art': { page: '/'},
-			'/repo/init-static': { page: '/', query: { repo: 'init-static' }}
 		}
 	},
 	webpack: config => {
