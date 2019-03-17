@@ -54,18 +54,37 @@ const Index = props => {
 											<Link as={`/repo/${r.name}`} href={`/index?repo=${r.name}`}>
 												<a className={c}>{r.name}</a>
 											</Link>
-											<style jsx>{`
-												li {
-													display: inline-block;
-													padding: 4px 16px;
-												}
-												a {
-													padding: 4px 16px;
-												}
-												`}</style>
+
 										</li>
 									)
 								})}
+								<style jsx>{`
+									ul {
+										box-sizing: border-box;
+										width: 75%;
+										max-height: 150px;
+										overflow-y: auto;
+										margin-bottom: 50px;
+										position: relative;
+									}
+									ul:before {
+										position: absolute;
+										bottom: 0;
+										left: 0;
+										right: 0;
+										background-image: linear-gradient(0deg,#000000 100%,rgba(0,0,0,.5));
+										-webkit-background-clip: text;
+										-webkit-text-fill-color: transparent;
+										display: block;
+									}
+									li {
+										display: block;
+										padding: 4px 16px;
+									}
+									a {
+										padding: 4px 16px;
+									}
+								`}</style>
 							</ul>
 						)}
 				</Box>
