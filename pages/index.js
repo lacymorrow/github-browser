@@ -67,7 +67,7 @@ const Index = props => {
 										margin-bottom: 50px;
 										position: relative;
 									}
-									ul:before {
+									ul::before {
 										position: absolute;
 										bottom: 0;
 										left: 0;
