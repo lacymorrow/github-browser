@@ -59,13 +59,38 @@ const Index = props => {
 									)
 								})}
 								<style jsx>{`
+
 									ul {
 										box-sizing: border-box;
 										width: 75%;
-										max-height: 150px;
-										overflow-y: auto;
+										max-height: 200px;
 										margin-bottom: 50px;
 										position: relative;
+										overflow-y: auto;
+										overflow-x: hidden;
+
+										background:
+											/* Shadow covers */
+											linear-gradient(white 30%, rgba(255,255,255,0)),
+											linear-gradient(rgba(255,255,255,0), white 70%) 0 100%,
+
+											/* Shadows */
+											radial-gradient(50% 0, farthest-side, rgba(0,0,0,.2), rgba(0,0,0,0)),
+											radial-gradient(50% 100%,farthest-side, rgba(0,0,0,.2), rgba(0,0,0,0)) 0 100%;
+										background:
+											/* Shadow covers */
+											linear-gradient(white 30%, rgba(255,255,255,0)),
+											linear-gradient(rgba(255,255,255,0), white 70%) 0 100%,
+
+											/* Shadows */
+											radial-gradient(farthest-side at 50% 0, rgba(0,0,0,.2), rgba(0,0,0,0)),
+											radial-gradient(farthest-side at 50% 100%, rgba(0,0,0,.2), rgba(0,0,0,0)) 0 100%;
+											background-repeat: no-repeat;
+											background-color: white;
+											background-size: 100% 40px, 100% 40px, 100% 14px, 100% 14px;
+
+											/* Opera doesn't support this in the shorthand */
+											background-attachment: local, local, scroll, scroll;
 									}
 									ul::before {
 										position: absolute;
@@ -83,6 +108,9 @@ const Index = props => {
 									}
 									a {
 										padding: 4px 16px;
+									}
+									a:hover {
+										color: ${colors.magenta};
 									}
 								`}</style>
 							</ul>

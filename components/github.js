@@ -2,4 +2,4 @@
 export const username = 'lacymorrow'
 
 // Github Repository
-export const featured = 'init-next'
+export const featured = 'github-browser'

@@ -63,6 +63,7 @@ const Repo = props => {
 							<Absolute right>
 								<Flex>
 									<Text f={24} color={colors.lightGray} children={props.repo.stargazers_count} />
+									&nbsp;
 									<Star f={24} />
 								</Flex>
 							</Absolute>
