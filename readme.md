@@ -2,6 +2,7 @@
 
 > Show off those pretty repos
 
+A Next.js experiment
 
 ## License
 
