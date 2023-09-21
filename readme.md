@@ -2,6 +2,9 @@
 
 > Show off those pretty repos
 
+<img width="1375" alt="image" src="https://github.com/lacymorrow/github-browser/assets/1311301/d71c67b2-3547-460c-8092-45fa8aa6d88a">
+
+
 A Next.js experiment
 
 ## License
