@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import Router from 'next/router'
 
-import { Flex, Box, Hide, Button, NavLink, Select } from 'rebass'
+import { Box, Flex, Select } from 'rebass'
 
 import { colors } from './styles'
 
@@ -20,19 +20,19 @@ const sx = {
 }
 
 const Header = (props) => {
-	let {error, username, text, repo, repos} = props
+	let { error, username, text, repo, repos } = props
 	return (
 		<div>
 			<Flex wrap align="center" style={sx.nav} p={2}>
 				<Link prefetch href="/">
 					<a>{text || 'Home'}</a>
 				</Link>
-				<Link
+				{!error && <Link
 					prefetch
 					href={`https://github.com/${username || ''}/${repo ||
 						''}`}>
-					<a>{error && 'Error loading' || 'GitHub'}</a>
-				</Link>
+					<a>GitHub</a>
+				</Link>}
 				<Box ml="auto" />
 				<Box ml={2} />
 				<Box w={[1 / 4]}>

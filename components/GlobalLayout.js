@@ -1,7 +1,7 @@
-import { Provider } from 'rebass'
 import Head from 'next/head'
-import Header from './Header'
+import { Provider } from 'rebass'
 import Footer from './Footer'
+import Header from './Header'
 import Script from './Script'
 
 
@@ -14,7 +14,7 @@ const sx = {
 }
 
 const Layout = (props) => {
-	let {title, ...other} = props
+	let { title, ...other } = props
 	return (
 		<Provider
 			theme={{
@@ -26,10 +26,10 @@ const Layout = (props) => {
 					<title>{props.title || 'Init'}</title>
 
 					<Script>
-					  {() => {
-					    // any arbitrary js
-					    console.log(`init loaded`)
-					  }}
+						{() => {
+							// any arbitrary js
+							console.log(`init loaded`)
+						}}
 					</Script>
 				</Head>
 				<Header {...other} />
@@ -81,7 +81,7 @@ const Layout = (props) => {
 				@keyframes grow {
 					0% {
 						transform: scaleX(0);
-					}	
+					}
 					100% {
 						transform: scaleX(1);
 					}

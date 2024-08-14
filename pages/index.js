@@ -7,17 +7,17 @@ import Link from 'next/link'
 
 
 /* Custom Components */
+import {
+	Box,
+	Flex
+} from 'rebass'
 import Layout from '../components/GlobalLayout'
 import Repo from '../components/Repo'
-import { colors, gradient } from '../components/styles'
-import {
-	Flex,
-	Box
-} from 'rebass'
+import { colors } from '../components/styles'
 
 
 // Github username and repo
-import { username, featured } from '../components/github'
+import { featured, username } from '../components/github'
 
 // Capitalizes and converts hyphens to spaces; 'init-next' -> 'Init Next'
 const prettyName = str => {
@@ -39,11 +39,11 @@ const Index = props => {
 			title={title}
 			username={username}
 			error={!project}>
-			<Flex direction="column">
+			<Flex direction="column" align="center">
 				<Box>
 					<Repo repo={project} title={title} username={username} />
 				</Box>
-				<Box width={[3 /4]}>
+				<Box width={[3 / 4]} >
 					{repos &&
 						repos.map && (
 							<ul>
@@ -121,17 +121,19 @@ const Index = props => {
 	)
 }
 
-Index.getInitialProps = async function(context) {
+Index.getInitialProps = async function (context) {
 	// Get the users repos (max: 30)
 	let repos = await fetch(`https://api.github.com/users/${username}/repos`)
-	  .then(res => res.json())
+		.then(res => res.json())
+
+	console.log(repos)
 
 	// Get a random repo if none set
 	let rand = Math.floor(Math.random() * repos.length)
 	let repo = context.query.repo || featured || repos[rand].name
 	let project =
 		repos.filter &&
-		repos.filter(function(obj) {
+		repos.filter(function (obj) {
 			return obj.name == repo
 		})[0]
 
