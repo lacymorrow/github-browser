@@ -39,7 +39,7 @@ const Index = props => {
 			title={title}
 			username={username}
 			error={!project}>
-			<Flex direction="column" align="center">
+			<Flex direction="column">
 				<Box>
 					<Repo repo={project} title={title} username={username} />
 				</Box>
